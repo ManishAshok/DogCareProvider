@@ -1,0 +1,51 @@
+<app-centerlinks></app-centerlinks>
+<p>This is centeraddplan works!</p>
+<div id="div1">
+    <div style="position: absolute; left: 300px; width:500px; height:300px;">
+        <h2 class="card-header">Add New Plan Page</h2>
+        <div class="loginpage">
+            <form [formGroup]="newPlanForm" (ngSubmit)="onSubmit()" class="loginpage">
+                <div class="form-group">
+                    <label for="planName">Plan Name</label>
+                    <input type="text" formControlName="planName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['planName'].errors }" />
+                    <div *ngIf="submitted && f['planName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['planName'].errors">Plan Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userName">Dog Type</label>
+                    <select formControlName="dtype" style="width:100%;height:37px;"
+                        [ngClass]="{ 'is-invalid': submitted && f['dtype'].errors }">
+                        <option value="Golden Retriever" selected>Golden Retriever</option>
+                        <option value="Labrador Retriever">Labrador Retriever</option>
+                        <option value="French Bulldog">French Bulldog</option>
+                        <option value="German Shepherd Dog">german shepherd dog</option>
+                        <option value="Poodle">Poodle</option>
+                        <option value="Bulldog">bulldog</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" formControlName="price" class="form-control"
+                        [ngClass]="{'is-invalid': submitted && f['price'].errors }" />
+                    <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                        <div *ngIf="f['price'].errors['required']">Price is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="price">Comments</label>
+                    <input type="text" formControlName="comments" class="form-control"
+                        [ngClass]="{'is-invalid': submitted && f['comments'].errors }" />
+                    <div *ngIf="submitted && f['comments'].errors" class="invalid-feedback">
+                        <div *ngIf="f['comments'].errors['required']">Comments is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary" style="width: 150px; height: 50px;">
+                    New Dog Plan
+                </button>
+            </form>
+        </div>
+        <br><br><br>
+    </div>
+</div>

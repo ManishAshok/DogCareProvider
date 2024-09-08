@@ -1,0 +1,75 @@
+<app-userlinks></app-userlinks>
+<div id="div1">
+    <div style="position: absolute; left: 300px; width:500px; height:300px;">
+        <h2 class="card-header">Add New Dog Page</h2>
+        <div class="loginpage">
+            <form [formGroup]="newDogForm" (ngSubmit)="onSubmit()" class="loginpage">
+                <div class="form-group">
+                    <label for="dogName">Dog Name</label>
+                    <input type="text" formControlName="dogName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['dogName'].errors }" />
+                    <div *ngIf="submitted && f['dogName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['dogName'].errors">Dog Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ownerName">OwnerName</label>
+                    <input type="text" formControlName="ownerName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['ownerName'].errors }" />
+                    <div *ngIf="submitted && f.ownerName.errors" class="invalid-feedback">
+                        <div *ngIf="f['ownerName'].errors['required']">Owner Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNum">PhoneNum</label>
+                    <input type="text" formControlName="phoneNum" class="form-control" maxlength="10"
+                    (keypress)="numberOnly($event)"
+                        [ngClass]="{ 'is-invalid': submitted && f['phoneNum'].errors }" />
+                    <div *ngIf="submitted && f.phoneNum.errors" class="invalid-feedback">
+                        <div *ngIf="f['phoneNum'].errors['required']">PhoneNum is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emailId">EmailId</label>
+                    <input type="email" formControlName="emailId" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['emailId'].errors }" />
+                    <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+                        <div *ngIf="f['emailId'].errors['required']">EmailId is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userName">Dog Type</label>
+                    <select formControlName="dtype" style="width:100%;height:37px;"
+                        [ngClass]="{ 'is-invalid': submitted && f['dtype'].errors }">
+                        <option value="Golden Retriever" selected>Golden Retriever</option>
+                        <option value="Labrador Retriever">Labrador Retriever</option>
+                        <option value="French Bulldog">French Bulldog</option>
+                        <option value="German Shepherd Dog">german shepherd dog</option>
+                        <option value="Poodle">Poodle</option>
+                        <option value="Bulldog">bulldog</option>
+                    </select>
+                </div>                
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="text" formControlName="qty" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['qty'].errors }" />
+                    <div *ngIf="submitted && f['qty'].errors" class="invalid-feedback">
+                        <div *ngIf="f['qty'].errors['qty']">Quantity is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" formControlName="price" class="form-control"
+                        [ngClass]="{'is-invalid': submitted && f['price'].errors }" />
+                    <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                        <div *ngIf="f['price'].errors['required']">Price is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary" style="width: 150px; height: 50px;">
+                    New Dog
+                </button>
+            </form>
+        </div>
+        <br><br><br>
+    </div>
+</div>
